@@ -3,10 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>Code Quiz</h1>
+    <div class="container">
+      <h1>French Code Quiz</h1>
+      <button type="button" id="start">START</button>
+      <span class="timer">0</span>
+    </div>
+
+    <div class="container" id="quiz">
+      <div class="column">
+        <div>
+          <p class="question">Question</p>
+          <input type="radio" /></br>
+          <input type="radio" /></br>
+          <input type="radio" /></br>
+          <input type="radio" />
+        </div>
+
+        <button type="button" id="button">user answer to populate here</button>
+        <div id="results"></div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
