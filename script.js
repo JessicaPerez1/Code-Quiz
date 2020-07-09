@@ -10,6 +10,10 @@ var quizEl = document.querySelector("#quiz");
 
 var resultsEl = document.querySelector(".results");
 
+var submitScore = document.querySelector(".btn");
+var userName = document.querySelector("#exampleInputName");
+var userScore = document.querySelector("#exampleFormControlTextarea1");
+
 // var buttons = document.querySelector(".btn");
 var divEl = document.querySelector(".div-buttons");
 var wrapperEl = document.querySelector(".wrapper");
@@ -198,3 +202,16 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+//submit user score
+submitScore.addEventListener("click", function () {
+  console.log(userName.value);
+  console.log(score.value);
+  var userInfo = {
+    userName: userName.value,
+    userScore: userScore.value,
+  };
+  // store user input
+  localStorage.setItem("User Info", JSON.stringify(userInfo));
+  var newInfo = JSON.parse(localStorage.getItem(userInfo));
+});
