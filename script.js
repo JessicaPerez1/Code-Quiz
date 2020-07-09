@@ -8,7 +8,7 @@ var optionC = document.querySelector("#optionC");
 var optionD = document.querySelector("#optionD");
 var quizEl = document.querySelector("#quiz");
 
-var rightWrongs = document.querySelector(".rightwrong");
+var resultsEl = document.querySelector(".results");
 
 // var buttons = document.querySelector(".btn");
 var divEl = document.querySelector(".div-buttons");
@@ -21,11 +21,11 @@ function checkAnswerA() {
   if (questionData === correctAnswer) {
     score++;
     questionNumber++;
-    // displayMessageA();
+    displayCorrectMessage();
   } else {
     questionNumber++;
     secondsLeft -= 10;
-    // displayMessageA();
+    displayWrongMessage();
   }
 }
 
@@ -36,14 +36,13 @@ function checkAnswerB() {
   if (questionData === correctAnswer) {
     score++;
     questionNumber++;
-    // displayMessageB();
+    displayCorrectMessage();
   } else {
     questionNumber++;
     secondsLeft -= 10;
-    // displayMessageB();
+    displayWrongMessage();
   }
 }
-
 function checkAnswerC() {
   var questionData = quiz[questionNumber]["c" + questionNumber];
   var correctAnswer = answers[questionNumber];
@@ -51,11 +50,11 @@ function checkAnswerC() {
   if (questionData === correctAnswer) {
     score++;
     questionNumber++;
-    // displayMessageC();
+    displayCorrectMessage();
   } else {
     questionNumber++;
     secondsLeft -= 10;
-    // displayMessageC();
+    displayWrongMessage();
   }
 }
 function checkAnswerD() {
@@ -65,12 +64,19 @@ function checkAnswerD() {
   if (questionData === correctAnswer) {
     score++;
     questionNumber++;
-    // displayMessageD();
+    displayCorrectMessage();
   } else {
     questionNumber++;
     secondsLeft -= 10;
-    // displayMessageD();
+    displayWrongMessage();
   }
+}
+
+function displayCorrectMessage() {
+  resultsEl.textContent = "BRAVO!!! Your score is: " + score;
+}
+function displayWrongMessage() {
+  resultsEl.textContent = "NON!!! Your score is: " + score;
 }
 
 optionA.addEventListener("click", checkAnswerA);
@@ -230,3 +236,5 @@ function clearScreen() {
     document.body.appendChild(btn);
   }
 }
+//startTimer -> displayQuestions ->add event listeners
+//event listner
