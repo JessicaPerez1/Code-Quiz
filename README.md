@@ -8,7 +8,8 @@ I included
 
 ## Web app screenshot
 
-![web page screenshot]()
+![French Code quiz page screenshot](Code-quiz-screenshot.png)
+![French Code quiz modal screenshot](Code-quiz-modal-screenshot.png)
 
 ## File submission
 
