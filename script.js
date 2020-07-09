@@ -1,67 +1,232 @@
 //DOM elements
 var timerEl = document.querySelector(".timer");
-var startEl = document.querySelector("#start");
+var startEl = document.querySelector(".start");
 
+var optionA = document.querySelector("#optionA");
+var optionB = document.querySelector("#optionB");
+var optionC = document.querySelector("#optionC");
+var optionD = document.querySelector("#optionD");
+var quizEl = document.querySelector("#quiz");
+
+var rightWrongs = document.querySelector(".rightwrong");
+
+// var buttons = document.querySelector(".btn");
+var divEl = document.querySelector(".div-buttons");
+var wrapperEl = document.querySelector(".wrapper");
+
+function checkAnswerA() {
+  var questionData = quiz[questionNumber]["a" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    // displayMessageA();
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+    // displayMessageA();
+  }
+}
+
+function checkAnswerB() {
+  var questionData = quiz[questionNumber]["b" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    // displayMessageB();
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+    // displayMessageB();
+  }
+}
+
+function checkAnswerC() {
+  var questionData = quiz[questionNumber]["c" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    // displayMessageC();
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+    // displayMessageC();
+  }
+}
+function checkAnswerD() {
+  var questionData = quiz[questionNumber]["d" + questionNumber];
+  var correctAnswer = answers[questionNumber];
+  console.log("we are here!", questionData, correctAnswer);
+  if (questionData === correctAnswer) {
+    score++;
+    questionNumber++;
+    // displayMessageD();
+  } else {
+    questionNumber++;
+    secondsLeft -= 10;
+    // displayMessageD();
+  }
+}
+
+optionA.addEventListener("click", checkAnswerA);
+optionB.addEventListener("click", checkAnswerB);
+optionC.addEventListener("click", checkAnswerC);
+optionD.addEventListener("click", checkAnswerD);
+
+//Array
+var optionArray = [optionA, optionB, optionC, optionD];
+var question = document.querySelector("#question");
 //set variables
-var secondsLeft = 100;
+var secondsLeft = 80;
 var score = 0;
 
 //create an array with quiz
-var correctAnswers = ("Bonjour", "An emperor", "1793", "The Storming of the Bastille", "Wine"];
-var quiz = 
-{
-    q1: "How do you say hello in French?",
-    a1: "Bongiorno",
-    b1: "Bonjour",
-    c1: "Aurevoir",
-    d1: "Merci",
-    q2: "Who was Napoleon Bonaparte?",
-    a2: "A painter",
-    b2: "A professional baker",
-    c2: "An emperor",
-    d2: "A landscaper",
-    q3:
-      "Which year marked the end of the monarchy in France and the beginning of the first Republic?",
-    a3: "1793",
-    b3: "1850",
-    c3: "1893",
-    d3: "1910",
-    q4: "On the 14 July, French people celebrate…",
-    a4: "Pastries",
-    b4: "The Storming of the Bastille",
-    c4: "Music Celebration",
-    d4: "Father's day",
+var answers = [
+  "Bonjour",
+  "An emperor",
+  "1793",
+  "The Storming of the Bastille",
+  "Wine",
+];
 
-    q5: "What is the city of Bordeaux known for?",
-    a5: "Pastries",
-    b5: "Museums",
-    c5: "Gardens",
-    d5: "Wine",
-  };
+var quiz = [
+  {
+    q0: "How do you say hello in French?",
+    a0: "Bongiorno",
+    b0: "Bonjour",
+    c0: "Aurevoir",
+    d0: "Merci",
+  },
+  {
+    q1: "Who was Napoleon Bonaparte?",
+    a1: "A painter",
+    b1: "A professional baker",
+    c1: "An emperor",
+    d1: "A landscaper",
+  },
+  {
+    q2:
+      "Which year marked the end of the monarchy in France and the beginning of the first Republic?",
+    a2: "1793",
+    b2: "1850",
+    c2: "1893",
+    d2: "1910",
+  },
+  {
+    q3: "On the 14 July, French people celebrate…",
+    a3: "Pastries",
+    b3: "The Storming of the Bastille",
+    c3: "Music Celebration",
+    d3: "Father's day",
+  },
+  {
+    q4: "What is the city of Bordeaux known for?",
+    a4: "Pastries",
+    b4: "Museums",
+    c4: "Gardens",
+    d4: "Wine",
+  },
+];
+
+var questionNumber = 0;
+
+//User Interactions
 
 //when we click on start btn, counter starts
 startEl.addEventListener("click", function () {
   startEl.style.display = "none";
   var myInterval = setInterval(function () {
-    console.log("it's working");
     timerEl.textContent = secondsLeft;
+    displayQuestion();
     secondsLeft--;
-    //TO DO
-    if (secondsLeft === 0) {
-      startEl.style.display = secondsLeft;
+    if (secondsLeft <= 0) {
       clearInterval(myInterval);
-      alert("Time is up");
+      clearScreen();
     }
   }, 1000);
 });
 
-//after timer starts, first question is displayed - create a display function
-//Check anser use .include method
-  //if user input === answer alert "yay"
-  // add 1 to the score
-  //if wrong, alert wrong + display correct answer to the bottom + take 5 seconds off timer
-//populate bottom button with correct answer
-//if timer reaches 0, then game is over
-//no more questions displayed - clear screen
-//then I am asked for my initials and score is displayed
-//when I click submit button, restart the quiz
+//After timer starts, first question is displayed - create a display question functions
+function displayQuestion() {
+  question.textContent = quiz[questionNumber]["q" + questionNumber];
+  optionA.value = "";
+  optionA.innerHTML = quiz[questionNumber]["a" + questionNumber];
+  optionB.value = "";
+  optionB.innerHTML = quiz[questionNumber]["b" + questionNumber];
+  optionC.value = "";
+  optionC.innerHTML = quiz[questionNumber]["c" + questionNumber];
+  optionD.value = "";
+  optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
+}
+
+// function displayMessageA() {
+//   var questionData = quiz[questionNumber]["a" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   if (questionData === correctAnswer) {
+//     rightWrong.innerHTML = "BRAVO!";
+//     document.body.appendChild(rightWrong);
+//   } else {
+//     rightWrongs.innerHTML = "NON!";
+//     document.body.appendChild(rightWrong);
+//   }
+// }
+
+// function displayMessageA() {
+//   var questionData = quiz[questionNumber]["a" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   if (questionData === correctAnswer) {
+//     rightWrong.innerHTML = "BRAVO!";
+//     document.body.appendChild(rightWrong);
+//   } else {
+//     rightWrongs.innerHTML = "NON!";
+//     document.body.appendChild(rightWrong);
+//   }
+// }
+// function displayMessageB() {
+//   var questionData = quiz[questionNumber]["b" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   if (questionData === correctAnswer) {
+//     rightWrong.innerHTML = "BRAVO!";
+//     document.body.appendChild(rightWrong);
+//   } else {
+//     rightWrongs.innerHTML = "NON!";
+//     document.body.appendChild(rightWrong);
+//   }
+// }
+// function displayMessageC() {
+//   var questionData = quiz[questionNumber]["c" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   if (questionData === correctAnswer) {
+//     rightWrongs.innerHTML = "BRAVO!";
+//     document.body.appendChild(rightWrong);
+//   } else {
+//     rightWrong.innerHTML = "NON!";
+//     document.body.appendChild(rightWrong);
+//   }
+// }
+
+// function displayMessageD() {
+//   var questionData = quiz[questionNumber]["d" + questionNumber];
+//   var correctAnswer = answers[questionNumber];
+//   if (questionData === correctAnswer) {
+//     rightWrong.innerHTML = "BRAVO!";
+//     document.body.appendChild(rightWrong);
+//   } else {
+//     rightWrong.innerHTML = "NON!";
+//     document.body.appendChild(rightWrong);
+//   }
+// }
+
+function clearScreen() {
+  if (quiz[questionNumber] === quiz.length) {
+    quizEl.textContent.display = "none";
+    document.createElement("btn");
+    btn.textContent = "Submit";
+    document.body.appendChild(btn);
+  }
+}

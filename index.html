@@ -3,31 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <h1>French Code Quiz</h1>
-      <button type="button" id="start">START</button>
-      <span class="timer"></span>
+    <div class="wrapper">
+    <div class="flex-container bg-primary row justify-content-around">
+      <img class="french-flag my-auto mx-4" src="https://cdn.webshopapp.com/shops/94414/files/54002808/france-flag-icon-free-download.jpg" alt="French flag">
+      <h1 class="h1 text-white mx-5">Ze French Quiz</h1>
+      <button type="button" class="start mx-auto">START</button>
+      <p class="timer text-white display-4 mr-4"></p>
     </div>
 
-    <div class="container" id="quiz">
-      <div class="column">
-        <div>
-          <p class="question">Question</p>
-          <input type="radio" /></br>
-          <input type="radio" /></br>
-          <input type="radio" /></br>
-          <input type="radio" />
-        </div>
-
-        <button type="button" id="button">user answer to populate here</button>
-        <div id="results"></div>
+    <div class="container row" id="quiz">
+      <div class="column-6 m-auto">
+        <h2 id="question">
+          <!-- insert question here -->
+        </h2>
+          <div class="div-buttons">
+            <button type="button" class="btn" id="optionA"></button></br>
+            <button type="button" class="btn" id="optionB"></button></br>
+            <button type="button" class="btn" id="optionC"></button></br>
+            <button type="button" class="btn" id="optionD">
+          </div>
+        <div class="rightwrong"></div>
       </div>
     </div>
-
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </body>
 </html>
