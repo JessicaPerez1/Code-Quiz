@@ -1,11 +1,13 @@
+/* flag image */
 .french-flag {
   max-width: 40px;
   max-height: 30px;
 }
+/* body font */
 body {
   font-family: "IM Fell French Canon SC", serif;
 }
-
+/* highscores button */
 #myBtn {
   position: fixed;
   z-index: 1;
@@ -15,6 +17,7 @@ body {
   color: white;
   background-color: red;
 }
+/* model content area */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -22,6 +25,7 @@ body {
   border: 1px solid red;
   width: 60%;
 }
+/* close button */
 .close {
   color: black;
   float: right;

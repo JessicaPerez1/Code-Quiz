@@ -10,7 +10,7 @@
     <title>Document</title>
   </head>
   <body>
-   <!-- //highscores modal -->
+   <!-- highscores modal -->
     <button id="myBtn">View Highscores!</button>
     <div id="myModal" class="modal">
       <div class="modal-content">
@@ -18,37 +18,43 @@
         <!-- form input -->
     <form>
         <div class="form-group">
+          <!-- Name -->
           <label for="exampleInputName">Name</label>
           <input type="name" class="form-control" id="exampleInputName" aria-describedby="namelHelp" placeholder="Your name here" />
         </div>
         <div class="form-group">
+          <!-- Score -->
           <label for="exampleFormControlTextarea1">Score</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="enter a number between 0 and 5"></textarea>
         </div>
+          <!-- Submit button -->
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       </div>
-    
     </div>
+          <!-- header with flag image and title-->
     <div class="wrapper pt-5">
     <div class="flex-container bg-primary row justify-content-around">
       <img class="french-flag my-auto mx-4" src="https://cdn.webshopapp.com/shops/94414/files/54002808/france-flag-icon-free-download.jpg" alt="French flag">
       <h1 class="h1 text-white mx-5">Ze French Quiz</h1>
+      <!-- start button -->
       <button type="button" class="start mx-auto">START</button>
       <p class="timer text-white display-4 mr-4"></p>
     </div>
-
+          <!-- quiz -->
     <div class="container row" id="quiz">
       <div class="column-6 m-auto">
+        <!-- question -->
         <h2 id="question">
-          <!-- insert question here -->
         </h2>
+        <!-- answer options -->
           <div class="div-buttons">
             <button type="button" class="btn" id="optionA"></button></br>
             <button type="button" class="btn" id="optionB"></button></br>
             <button type="button" class="btn" id="optionC"></button></br>
             <button type="button" class="btn" id="optionD">
           </div>
+          <!-- right/wrong message -->
         <h3 class="results m-3"></h3>
       </div>
     </div>
