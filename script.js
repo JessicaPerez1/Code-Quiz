@@ -170,64 +170,6 @@ function displayQuestion() {
   optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
 }
 
-// function displayMessageA() {
-//   var questionData = quiz[questionNumber]["a" + questionNumber];
-//   var correctAnswer = answers[questionNumber];
-//   if (questionData === correctAnswer) {
-//     rightWrong.innerHTML = "BRAVO!";
-//     document.body.appendChild(rightWrong);
-//   } else {
-//     rightWrongs.innerHTML = "NON!";
-//     document.body.appendChild(rightWrong);
-//   }
-// }
-
-// function displayMessageA() {
-//   var questionData = quiz[questionNumber]["a" + questionNumber];
-//   var correctAnswer = answers[questionNumber];
-//   if (questionData === correctAnswer) {
-//     rightWrong.innerHTML = "BRAVO!";
-//     document.body.appendChild(rightWrong);
-//   } else {
-//     rightWrongs.innerHTML = "NON!";
-//     document.body.appendChild(rightWrong);
-//   }
-// }
-// function displayMessageB() {
-//   var questionData = quiz[questionNumber]["b" + questionNumber];
-//   var correctAnswer = answers[questionNumber];
-//   if (questionData === correctAnswer) {
-//     rightWrong.innerHTML = "BRAVO!";
-//     document.body.appendChild(rightWrong);
-//   } else {
-//     rightWrongs.innerHTML = "NON!";
-//     document.body.appendChild(rightWrong);
-//   }
-// }
-// function displayMessageC() {
-//   var questionData = quiz[questionNumber]["c" + questionNumber];
-//   var correctAnswer = answers[questionNumber];
-//   if (questionData === correctAnswer) {
-//     rightWrongs.innerHTML = "BRAVO!";
-//     document.body.appendChild(rightWrong);
-//   } else {
-//     rightWrong.innerHTML = "NON!";
-//     document.body.appendChild(rightWrong);
-//   }
-// }
-
-// function displayMessageD() {
-//   var questionData = quiz[questionNumber]["d" + questionNumber];
-//   var correctAnswer = answers[questionNumber];
-//   if (questionData === correctAnswer) {
-//     rightWrong.innerHTML = "BRAVO!";
-//     document.body.appendChild(rightWrong);
-//   } else {
-//     rightWrong.innerHTML = "NON!";
-//     document.body.appendChild(rightWrong);
-//   }
-// }
-
 function clearScreen() {
   if (quiz[questionNumber] === quiz.length) {
     quizEl.textContent.display = "none";
@@ -236,25 +178,20 @@ function clearScreen() {
     document.body.appendChild(btn);
   }
 }
-//startTimer -> displayQuestions ->add event listeners
-//event listner
 
 //MODAL
 //DOM ELEMENTS
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var closeEl = document.getElementsByClassName("close")[0];
-
 // When user clicks button, open modal
 btn.onclick = function () {
   modal.style.display = "block";
 };
-
 // When user clicks on x, close modal
 closeEl.onclick = function () {
   modal.style.display = "none";
 };
-
 // When user clicks anywhere outside of modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
