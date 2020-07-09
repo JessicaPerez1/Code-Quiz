@@ -5,3 +5,25 @@
 body {
   font-family: "IM Fell French Canon SC", serif;
 }
+
+#myBtn {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  color: white;
+  background-color: red;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid red;
+  width: 60%;
+}
+.close {
+  color: black;
+  float: right;
+  font-size: 40px;
+}

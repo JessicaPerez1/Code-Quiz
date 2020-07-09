@@ -88,7 +88,7 @@ optionD.addEventListener("click", checkAnswerD);
 var optionArray = [optionA, optionB, optionC, optionD];
 var question = document.querySelector("#question");
 //set variables
-var secondsLeft = 80;
+var secondsLeft = 60;
 var score = 0;
 
 //create an array with quiz
@@ -238,3 +238,26 @@ function clearScreen() {
 }
 //startTimer -> displayQuestions ->add event listeners
 //event listner
+
+//MODAL
+//DOM ELEMENTS
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var closeEl = document.getElementsByClassName("close")[0];
+
+// When user clicks button, open modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When user clicks on x, close modal
+closeEl.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When user clicks anywhere outside of modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
