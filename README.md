@@ -19,5 +19,4 @@ HTML, JS and CSS files submitted for review:
   https://jessicaperez1.github.io/Code-Quiz/.
 
 - The URL of the GitHub repository:
-
-![GitHub repository]()
+  https://github.com/JessicaPerez1/Code-Quiz.git
