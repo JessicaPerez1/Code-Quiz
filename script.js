@@ -1,4 +1,4 @@
-//DOM elements
+//DEPENDENCIES
 var timerEl = document.querySelector(".timer");
 var startEl = document.querySelector(".start");
 
@@ -10,14 +10,16 @@ var optionD = document.querySelector("#optionD");
 var quizEl = document.querySelector("#quiz");
 var resultsEl = document.querySelector(".results");
 
+//modal
 var submitScore = document.querySelector(".btn");
 var userName = document.querySelector("#exampleInputName");
 var userScore = document.querySelector("#exampleFormControlTextarea1");
 
 var divEl = document.querySelector(".div-buttons");
 var wrapperEl = document.querySelector(".wrapper");
-
-//create an array with the CORRECT answers
+//score array variable for local storage
+var scoresArr = [];
+//answers array with the CORRECT answers
 var answers = [
   "Bonjour",
   "An emperor",
@@ -67,6 +69,8 @@ var quiz = [
 ];
 
 var questionNumber = 0;
+var totalNumberOfQuestions = answers.length;
+console.log(totalNumberOfQuestions);
 //4 functions to check for each answer options a, b, c, d
 function checkAnswerA() {
   //access answer a in the quiz array and store into questionData
@@ -142,6 +146,14 @@ function displayCorrectMessage() {
 function displayWrongMessage() {
   resultsEl.textContent = "NON!!! Your score is: " + score;
 }
+function clear() {
+  var questionNumber = quiz[questionNumber];
+  if ((lastQuestion = quiz[q5])) {
+    resultsEl.textContent = "Your total score is: " + score;
+  } else {
+  }
+}
+
 //event listeners on click for each answer option
 optionA.addEventListener("click", checkAnswerA);
 optionB.addEventListener("click", checkAnswerB);
@@ -154,56 +166,6 @@ var question = document.querySelector("#question");
 //set variables
 var secondsLeft = 60;
 var score = 0;
-
-//create an array with full quiz questions and answers
-var answers = [
-  "Bonjour",
-  "An emperor",
-  "1793",
-  "The Storming of the Bastille",
-  "Wine",
-];
-
-var quiz = [
-  {
-    q0: "How do you say hello in French?",
-    a0: "Bongiorno",
-    b0: "Bonjour",
-    c0: "Aurevoir",
-    d0: "Merci",
-  },
-  {
-    q1: "Who was Napoleon Bonaparte?",
-    a1: "A painter",
-    b1: "A professional baker",
-    c1: "An emperor",
-    d1: "A landscaper",
-  },
-  {
-    q2:
-      "Which year marked the end of the monarchy in France and the beginning of the first Republic?",
-    a2: "1793",
-    b2: "1850",
-    c2: "1893",
-    d2: "1910",
-  },
-  {
-    q3: "On the 14 July, French people celebrate…",
-    a3: "Pastries",
-    b3: "The Storming of the Bastille",
-    c3: "Music Celebration",
-    d3: "Father's day",
-  },
-  {
-    q4: "What is the city of Bordeaux known for?",
-    a4: "Pastries",
-    b4: "Museums",
-    c4: "Gardens",
-    d4: "Wine",
-  },
-];
-
-var questionNumber = 0;
 
 //User Interactions
 
@@ -218,16 +180,19 @@ startEl.addEventListener("click", function () {
     displayQuestion();
     //timer going down
     secondsLeft--;
-    if (secondsLeft <= 0) {
+    //if no time left or if last answer button pressed, then stop counter and clear the screen
+    if (secondsLeft <= -1) {
       clearInterval(myInterval);
-      clearScreen();
+      //clearScreen();
     }
   }, 1000);
 });
 
 //display question function to loop through quiz array and get quesion and its corresponding answer options
 function displayQuestion() {
-  question.textContent = quiz[questionNumber]["q" + questionNumber];
+  //if quiz question is > to the number of answers, then clear
+  question.value = "";
+  question.innerHTML = quiz[questionNumber]["q" + questionNumber];
   optionA.value = "";
   optionA.innerHTML = quiz[questionNumber]["a" + questionNumber];
   optionB.value = "";
@@ -238,15 +203,16 @@ function displayQuestion() {
   optionD.innerHTML = quiz[questionNumber]["d" + questionNumber];
 }
 
-//this is incomplete - clear the screen after we reach the last question
-function clearScreen() {
-  if (quiz[questionNumber] > quiz.length) {
-    quizEl.textContent.display = "none";
-    var but = document.createElement("button");
-    but.textContent = "Submit";
-    document.body.appendChild(but);
-  }
-}
+//HOW TO SELECT THE LAST ANSWER BUTTON?? == Create a helper function checklastanswerbutton
+//if answer number > 5, it means its the last question
+// function clearScreen() {
+//   if (quiz[questionNumber] > quiz.length) {
+//     quizEl.style.display = "none";
+//     var but = document.createElement("button");
+//     but.textContent = "Submit";
+//     document.body.appendChild(but);
+//   }
+// }
 
 //MODAL
 //DOM ELEMENTS
@@ -262,13 +228,14 @@ closeEl.onclick = function () {
   modal.style.display = "none";
 };
 // When user clicks anywhere outside of modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+// window.onclick = function (event) {
+//   event.preventDefault();
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// };
 
-//submit user score
+// //submit user score
 submitScore.addEventListener("click", function () {
   console.log(userName.value);
   console.log(score.value);
@@ -276,7 +243,14 @@ submitScore.addEventListener("click", function () {
     userName: userName.value,
     userScore: userScore.value,
   };
-  // store user input
+  //store user input
   localStorage.setItem("User Info", JSON.stringify(userInfo));
   var newInfo = JSON.parse(localStorage.getItem(userInfo));
 });
+
+//use sort method to find highest score
+//
+//arrayname.sort(function(a, b) { return b.userScore - a.userScore} ==== a=1, b=i++
+
+//Clear screen and display final score
+//
